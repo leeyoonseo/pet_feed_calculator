@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애완동물 사료계산기</title>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/common.css">
+</head>
+<body>
+    <section>
+        <h1>계산기</h1>
+
+        <div>
+            <label for="inputAge">나이</label>
+            <input id="inputAge" placeholder="나이" value="1">
+
+            <select id="selectAge">
+                <option selected value="year">살</option>
+                <option value="month">개월</option>
+                <option value="day">일</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="inputWeight">무게</label>
+            <input id="inputWeight" placeholder="무게" value="2">
+
+            <select id="selectWeight">
+                <option selected value="kg">kg</option>
+                <option value="g">g</option>
+            </select>
+        </div>
+
+        <button id="submitBtn">확인</button>
+    </section>
+
+    <div id="viewer"></div>
+
+    <script src="../assets/js/common.js"></script>
+</body>
+</html>
