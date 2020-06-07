@@ -14,8 +14,6 @@
     let inputAge = document.querySelector('#inputAge');
     let inputWeight = document.querySelector('#inputWeight');
     let viewer = document.querySelector('#viewer');
-  
-    
 
     /*
         info
@@ -31,19 +29,34 @@
 
    // 일수 구하기
    // [TODO] 일수말고, 월수를 기준으로 잡자!
-   let getDaysByMonth = (age) => {
+   let getMonthData = (age) => {
 
-    console.log(age)
-        let date = new Date();
-        let year = date.getFullYear();
-        let month = date.getMonth() + 1;
-        let result = 0;
+        // 1일 들어옴
+        let idx = 0;
+        let month = getMonthNum(age);
 
-        for(let i = 0; i < age; i++){
-            result = result + new Date(year, month - [i], 0).getDate()
-        }
-        
-        return result         
+        return month;
+
+        function getMonthNum(age, i = 0){
+            let date = new Date();
+            let yy = date.getFullYear();
+            let mm = date.getMonth() + 1;
+            let day = new Date(yy, mm - [i], 0).getDate();
+            let diffVal = day - age;
+            
+            // 한달
+            if(diffVal === 0){
+                idx++;
+
+            // 한달 이상
+            }else if(Math.sign(diffVal) === -1){
+                i++
+                idx++;
+                getMonthNum(Math.abs(diffVal), i);
+            }
+
+            return idx;
+        }       
    }
 
     let weightConverter = (weight) => {
@@ -56,17 +69,31 @@
 
     let ageConverter = (age) => {
         if(selectAge.value === 'year'){
-            age = (age * 365);
-
-        }else if(selectAge.value === 'month'){
-            age = getDaysByMonth(age);
+            age = age * 12;
+        }else if(selectAge.value === 'day'){
+            age = getMonthData(age);
         }
 
         return age;
     };
 
     let feedCalculator = (weight, age) =>{
-        // console.log(weight, age)
+        console.log(weight, age);
+
+        // 한달 미만
+        if(age <= 1){
+            console.log('모유기이네요')
+        }else if(age >= 2 && age <= 3){
+            console.log('2~3개월')
+
+        }else if(age >= 4 && age <= 5){
+            console.log('4~5개월')
+
+        }else if(age >= 6 && age <= 11){
+            console.log('6~11개월')
+        }else{
+            console.log('1살보다많아요')
+        }
     };
 
     let controller = () => {
