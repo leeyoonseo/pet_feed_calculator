@@ -2,35 +2,43 @@
     
 /**
  * [TODO] 
- * 1. 월을 기준으로 계산하자
- * 2. 숫자만 입력받기
- *   
+ * 2. 숫자만 입력받기 (validation처리, error 처리 생각)
+ * 3. 네이밍 정리
+ * 4. 리팩터링
+ * 5. 강아지 고양이 나눠서 js, 같이 쓸 수 있는 모듈은 common으로 빼기
+ * 6. 애니메이션 처리
+ * 7. 포커싱
+ * 8. 객체로 인자 넘기는 방법
+ * 9. 타입스크립트 - 리액트
+ * 10. 배포, 자동빌드
+ * 11. 이미지 따로 관리? 이건고민
  */
 
+ // [TODO] 네이밍에 Node 붙이기
     let input = document.querySelectorAll('input');
     let submitBtn = document.querySelector('#submitBtn');
     let selectAge = document.querySelector('#selectAge');
     let selectWeight = document.querySelector('#selectWeight');
     let inputAge = document.querySelector('#inputAge');
     let inputWeight = document.querySelector('#inputWeight');
-    let viewer = document.querySelector('#viewer');
+    let foodBasket = document.querySelector('#foodBasket');
+    let copyrightYearNode = document.querySelector('#year');
+    let viewerInfoNode = document.querySelector('#viewerInfo');
 
- 
+    let date = new Date();
+    let yy = date.getFullYear();
+    let mm = date.getMonth() + 1;
 
-   // 일수 구하기
-   // [TODO] 일수말고, 월수를 기준으로 잡자!
+    copyrightYearNode.innerText = `${yy}.${mm}`;
+    
    let getMonthData = (age) => {
-
-        // 1일 들어옴
         let idx = 0;
         let month = getMonthNum(age);
 
         return month;
 
         function getMonthNum(age, i = 0){
-            let date = new Date();
-            let yy = date.getFullYear();
-            let mm = date.getMonth() + 1;
+            
             let day = new Date(yy, mm - [i], 0).getDate();
             let diffVal = day - age;
             
@@ -67,10 +75,6 @@
         return age;
     };
 
-    let draw = (num) => {
-        console.log(num)
-    }
-
      /*
         info
         강아지
@@ -84,47 +88,75 @@
     */
 
     let feedCalculator = (weight, age) =>{
-        console.log(weight, age);
-        let result = {};
+        let result = {
+            age,
+            weight
+        };
         
         // 한달 미만
         if(age <= 1){
-            console.log('모유기이네요')
+            return false;
 
         }else if(age >= 2 && age <= 3){
-            console.log('2~3개월')
             result.lowest = weight * 0.06;
             result.highest = weight * 0.07;
-            result.num = '3, 4';
+            result.frequency = '3,4';
 
         }else if(age >= 4 && age <= 6){
             result.lowest = weight * 0.04;
             result.highest = weight * 0.05;
-            result.num = '2, 3';
+            result.frequency = '2,3';
 
         }else if(age >= 7 && age <= 11){
-            console.log('6~11개월')
             result.lowest = weight * 0.02;
             result.highest = weight * 0.03;
-            result.num = '2';
+            result.frequency = '2';
 
         }else{
-            console.log('1살보다많아요')
             result.lowest = weight * 0.02;
-            result.num = '2';
+            result.frequency = '2';
         }
 
         return result;
     };
 
+    let drawFood = () => {
+        let span = document.createElement('span');
+        span.classList.add('food');
+
+        return span;
+    }
+
     let drawViewer = (info) => {
         if(!info){
-            console.log('모유기?')
+            foodBasket.classList.add('baby');
+            
+            for(let i = 0; i < 3; i++){
+                foodBasket.appendChild(drawFood());
+            }
+
+            viewerInfoNode.innerText = '모유기때는 아가가 배고플때마다 줘야해요.';
 
         }else{
-            console.log(info)
+            let frequencySplit = info.frequency.split(',');
+            let frequencyText = frequencySplit.join('~');
+            let foodText = `${info.lowest}g`;
+            let weightText = `${info.weight}g`;
 
+            if(frequencyText.length > 1){
+                foodText = `${info.lowest}~${info.highest}g`;
+            }
 
+            if(selectWeight.value === 'kg'){
+                weightText = `${info.weight/1000}kg`;
+            }
+
+            // [TODO] 이거 나타날때 애니메이션 할 수 있게 setTimeout 시간을 조절하자.
+            for(let i = 0; i < frequencySplit[1]; i++){
+                foodBasket.appendChild(drawFood());
+            }
+
+            viewerInfoNode.innerText = `${info.age}개월, ${weightText} 아가는 하루에 ${foodText}을 ${frequencyText}회에 걸쳐서 줘야해요.`;
         }
     };
 
@@ -185,6 +217,11 @@
         }
 
         if(flag){
+            if(foodBasket.getElementsByClassName('food')){
+                foodBasket.innerHTML = '';
+                viewerInfoNode.innerText = '';
+            } 
+
             controller();
         }
     });

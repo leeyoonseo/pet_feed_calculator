@@ -8,17 +8,17 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/common.css">
 </head>
 <body>
-    <section>
+    <section class="wrap dog">
         <h1>계산기</h1>
 
         <div>
             <label for="inputAge">나이</label>
-            <input id="inputAge" placeholder="나이" value="1">
+            <input id="inputAge" placeholder="나이" value="2">
 
             <select id="selectAge">
                 <option  value="year">살</option>
-                <option  value="month">개월</option>
-                <option selected value="day">일</option>
+                <option  selected value="month">개월</option>
+                <option  value="day">일</option>
             </select>
         </div>
 
@@ -33,9 +33,22 @@
         </div>
 
         <button id="submitBtn">확인</button>
+
+        <div id="viewer" class="viewer">
+            <span class="character"></span>
+            <span id="viewerInfo" class="text"></span>
+            <div id="foodBasket"></div>
+        </div>
     </section>
 
-    <div id="viewer"></div>
+    <footer>
+        <div class="copyright">
+            okayoon.lee@gmail.com | 2020.6 ~ <span id="year"></span>
+        </div>
+        <div class="authorship">
+            Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+        </div>
+    </footer>
 
     <script src="../assets/js/common.js"></script>
 </body>
