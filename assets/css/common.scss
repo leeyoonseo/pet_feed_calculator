@@ -1,29 +1,55 @@
 //[TODO] css, scss 파일 분리, 자동화 만들기
-
 html{
+
+    // [TODO] 스타일 정리하기
+    // [TODO] 600px 아래일 경우 하단에 footer 붙여버리기
+    min-height:600px;
+    height:100%;
+}
+
+body{
+    margin:0;
+    padding:0;
+    font-size:1em;
     height:100%;
 
-    body{
-        margin:0;
-        padding:0;
-        font-size:1em;
-        height:100%;
-    }    
+    .hidden{
+        position:absolute; 
+        width:1px; 
+        height:1px; 
+        clip:rect(0 0 0 0); 
+        overflow:hidden; 
+        border:0; 
+        padding:0; 
+        margin:-1px;
+    }
 
     ul,li,ol{
         list-style:none;
     }
-}
+
+    a{
+        text-decoration:none;
+        color:#333;
+    }
+
+    input{
+        outline:none;
+    }
+
+    a, button{
+        outline:none;
+        cursor:pointer;
+    }
+}    
 
 header{
-    // [TODO] box-shadow로 분리?
-
+    position:relative;
+    min-width:320px;
+    padding:0 20px;
     height:50px;
-    border-bottom:1px solid red;
     box-sizing:border-box;
-
-    // padding:10px 20px;
-
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
 
     // [TODO] mixin으로 clearboth 만들것
     &:after{
@@ -37,32 +63,46 @@ header{
         float:left;
         width:50%;
         font-size:24px;
-        line-height:1;
-    }
+        line-height:50px;
 
-    .header__btns{
-        width:50%;
-        float:right;
-        text-align:right;
-
-        button{
-            padding:2px 20px;
-            display:inline-block;
-            border:1px solid #333;
-            border-radius:3px;
-            background:transparent;
-            
+        a{
+            color:#fcb63e;
         }
     }
 
+    .header__btn__prev{
+        position:absolute;
+        top:50%;
+        transform:translateY(-50%);
+        right:20px;
+        border:none;
+        width:32px;
+        height:32px;
+        background:url(../img/icon_arrow_left.png)no-repeat;
+        background-size:cover;
+    }
+}
+
+.article{
+    padding:0 20px;
+    min-width:320px;
+
+    display:flex;
+    height:calc(100% - 100px);
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
 }
 
 footer{
+    min-width:320px;
+    padding:8px 20px;
+    box-sizing:border-box;
     position:fixed;
     bottom:0;
     width:100%;
     text-align:center;
-    padding:20px;
+    height:50px;
     background:#555;
     font-size:12px;
     color:#fff;

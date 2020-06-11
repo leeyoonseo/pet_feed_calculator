@@ -29,6 +29,7 @@
     let yy = date.getFullYear();
     let mm = date.getMonth() + 1;
 
+    // [TODO] 확인해보기
     copyrightYearNode.innerText = `${yy}.${mm}`;
     
    let getMonthData = (age) => {
@@ -176,7 +177,7 @@
     // [TODO] validation과 err에 대해 생각해보기
     let error = {
         show : (target) => {
-            target.style.border = '1px solid red';
+            target.classList.add('error');
             
             let err = target.parentNode.querySelector('.err') || document.createElement('span');
 
@@ -185,13 +186,13 @@
 
             }else{
                 err.classList.add('err');
-                err.innerText = 'a';
+                err.innerText = '입력해주세요.';
                 target.parentNode.appendChild(err);
             }
         },
 
         hide : ({ target }) => {
-            target.style.border = '1px solid #333';
+            target.classList.remove('error');
             
             let err = target.parentNode.querySelector('.err');
             

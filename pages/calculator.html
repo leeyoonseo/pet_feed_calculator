@@ -5,40 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>애완동물 사료계산기</title>
 
-    <link rel="stylesheet" type="text/css" href="./assets/css/common.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/common.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/calculator.min.css">
 </head>
 <body>
-    <section class="wrap dog">
-        <h1>계산기</h1>
+    <!-- [TODO] react 컴포넌트로 짜기 -->
+    <header>
+        <!-- [TODO] 로고 클릭 시 메인으로 -->
+        <h1><a href="">OKAYOON</a></h1>
 
-        <div>
-            <label for="inputAge">나이</label>
-            <input id="inputAge" placeholder="나이" value="2">
+        <!-- [TODO] 아이콘으로 대체하기 -->
+        <button class="header__btn__prev">
+            <span class="hidden">뒤로가기</span>
+        </button>
+    </header>
 
-            <select id="selectAge">
-                <option  value="year">살</option>
-                <option  selected value="month">개월</option>
-                <option  value="day">일</option>
-            </select>
-        </div>
+    <section class="article dog__wrap">
+        <h2 class="hidden">계산기</h2>
 
-        <div>
-            <label for="inputWeight">무게</label>
-            <input id="inputWeight" placeholder="무게" value="2">
+        <div class="article__box">
+            <div class="article__items">
+                <div class="article__input__wrap">
+                    <label for="inputAge">나이</label>
+                    <input id="inputAge" placeholder="나이" value="2">
+        
+                    <select id="selectAge">
+                        <option  value="year">살</option>
+                        <option  selected value="month">개월</option>
+                        <option  value="day">일</option>
+                    </select>
+                </div>
+        
+                <div class="article__input__wrap">
+                    <label for="inputWeight">무게</label>
+                    <input id="inputWeight" placeholder="무게" value="2">
+        
+                    <select id="selectWeight">
+                        <option selected value="kg">kg</option>
+                        <option value="g">g</option>
+                    </select>
+                </div>
+        
+                <button id="submitBtn" class="article__submit">확인</button>           
+            </div>
 
-            <select id="selectWeight">
-                <option selected value="kg">kg</option>
-                <option value="g">g</option>
-            </select>
-        </div>
-
-        <button id="submitBtn">확인</button>
-
-        <div id="viewer" class="viewer">
-            <span class="character"></span>
-            <span id="viewerInfo" class="text"></span>
-            <div id="foodBasket"></div>
+            <!-- [TODO] 레이어팝업처럼 -->
+            <div id="viewer" class="article__items viewer">
+                <!-- [TODO] 이미지 추가할 것 -->
+                <button>X<span class="hidden">닫기</span></button>
+                <span class="character"></span>
+                <span id="viewerInfo" class="text"></span>
+                <div id="foodBasket"></div>
+            </div>
         </div>
     </section>
 
@@ -47,7 +65,7 @@
             okayoon.lee@gmail.com | 2020.6 ~ <span id="year"></span>
         </div>
         <div class="authorship">
-            Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+            Icons made by <a href="http://www.freepik.com" target="_blank" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
         </div>
     </footer>
 

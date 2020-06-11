@@ -1,20 +1,72 @@
 // [TODO] mobile기준으로 볼거얌. font-size vw로 할 것!
 .main__wrap{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    justify-content:center;
-
+    
 
     .main__list{
         margin:0;
         padding:0;
         max-width:600px;
-        border:1px solid #333;
+        width:100%;
+        box-sizing:border-box;
 
-        .main__list__items{
-            display:inline-block;
-            width:50%;
+        .main__list__items{      
+            background:rgba(252, 182, 62, 0.1);
+            border:3px solid rgba(252, 182, 62, 0.5);
+            float:left;
+            
+            width:calc(50% - 10px);
+            height:200px;
+            box-sizing:border-box;
+
+            &:nth-of-type(even){
+                margin-left:20px;
+            }
+
+            &:nth-of-type(n+3){
+                margin-top:20px;
+            }
+
+            a{
+                display:flex;
+                flex-wrap:wrap;
+                align-items:center;
+                justify-content:center;
+                width:100%;
+                height:100%;
+            }
+            
+            &:hover .bg_pet{
+                transform:scale(1.2);
+                transition:all 0.2s linear;
+            }
+
+            .bg_pet{
+                display:block;
+                width:100px;
+                height:100px;
+                background-size:contain;
+                background-position:center;
+                transform:scale(1);
+                transition:all 0.2s linear;
+            }
+            
         }
     }
+
+    .dog .bg_pet{
+        background:url(../img/icon_dog.png)no-repeat;
+    }
+
+    .cat .bg_pet{
+        background:url(../img/icon_cat.png)no-repeat;
+    }
+
+    .rabbit .bg_pet{
+        background:url(../img/icon_rabbit.png)no-repeat;
+    }
+
+    .hamster .bg_pet{
+        background:url(../img/icon_hamster.png)no-repeat;
+    }
 }
+
