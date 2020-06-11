@@ -4,33 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>애완동물 사료계산기</title>
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/common.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/index.min.css">
 </head>
 <!-- 강아지 고양이 토끼 햄스터 -->
 <body>
-    <div class="box_pets">
-        <span class="subject">강아지</span>
-        <a href="./pages/calculator.html?dog"><span class="hidden">강아지 버튼</span></a>
-    </div>
+    <header>
+        <h1>OKAYOON</h1>
 
-    <div class="box_pets">
-        <span class="subject">강아지</span>
-        <a href="./dog.html"><span class="hidden">강아지 버튼</span></a>
-    </div>
+        <!-- [TODO] 아이콘으로 대체하기 -->
+        <div class="header__btns">
+            <button>뒤로가기</button>
+            <button>닫기</button>
+        </span>
+    </header>
 
-    <div class="box_pets">
-        <span class="subject">강아지</span>
-        <a href="./dog.html"><span class="hidden">강아지 버튼</span></a>
-    </div>
-    
-    <div class="box_pets">
-        <span class="subject">강아지</span>
-        <a href="./dog.html"><span class="hidden">강아지 버튼</span></a>
-    </div>
-
-    <div>
+    <!-- [TODO] tooltip형식으로? -->
+    <!-- <div>
         noti!!
         평균적인 데이터로 보조적으로 보셔야합니다.
         사료량은 사료의 성분, 아이의 활동량이나 비만여부 그리고 나이에 따라 달라질 수 있습니다.
-    </div>
+    </div> -->
+    <section class="main__wrap">
+        <ul class="main__list">
+            <li class="main__list__items">강아지</li>
+            <li class="main__list__items">강아지</li>
+            <li class="main__list__items">강아지</li>
+            <li class="main__list__items">강아지</li>
+        </ul>
+        <!-- <div class="box_pets">
+            <span class="subject">강아지</span>
+            <a href="./pages/calculator.html?dog"><span class="hidden">강아지 버튼</span></a>
+        </div>
+    
+        <div class="box_pets">
+            <span class="subject">고양이</span>
+            <a href="./dog.html"><span class="hidden">고양이 버튼</span></a>
+        </div>
+    
+        <div class="box_pets">
+            <span class="subject">토끼</span>
+            <a href="./dog.html"><span class="hidden">토끼 버튼</span></a>
+        </div>
+        
+        <div class="box_pets">
+            <span class="subject">햄스터</span>
+            <a href="./dog.html"><span class="hidden">햄스터 버튼</span></a>
+        </div> -->
+    </section>
+
+    <footer>
+        <div class="copyright">
+            okayoon.lee@gmail.com | 2020.6 ~ <span id="year"></span>
+        </div>
+        <div class="authorship">
+            Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+        </div>
+    </footer>
 </body>
 </html>

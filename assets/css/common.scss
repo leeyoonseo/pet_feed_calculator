@@ -1,73 +1,69 @@
-body{
-    margin:0;
-    padding:0;
-}
+//[TODO] css, scss 파일 분리, 자동화 만들기
 
-.wrap{
-    margin:0 20px;
-    border:1px solid #333;
-    color:#333;
-}
+html{
+    height:100%;
 
-label{
-    position:absolute;
-    left:0;
-    top:0;
-    overflow:hidden;
-    width:1px;
-    height:1px;
-    clip:rect(0 0 0 0);
-    margin-left:-1px;
-}
+    body{
+        margin:0;
+        padding:0;
+        font-size:1em;
+        height:100%;
+    }    
 
-.dog{
-    .viewer{
-        padding:20px; 
-        text-align:center;
-        
-        .text{
-            padding:5px 0 12px;
-            display:block;
-            font-size:14px;
-        }
-
-        .character{
-            display:inline-block;
-            width:100px;
-            height:100px;
-            background:url(../img/icon_dog.png)no-repeat;
-            background-size:cover;
-        }
-    
-        .food{
-            display:inline-block;
-            width:50px;
-            height:50px;
-            background:url(../img/icon_dog_food.png)no-repeat;
-            background-size:cover;
-        
-            & + .food{
-                margin-left:10px;
-            }
-        }
-
-        .baby{
-            .food{
-                background:url(../img/icon_baby_bottle.png)no-repeat;
-                background-size:cover;
-
-                & + .food{
-                    margin-left:0;
-                }
-            }
-        }
+    ul,li,ol{
+        list-style:none;
     }
 }
 
+header{
+    // [TODO] box-shadow로 분리?
+
+    height:50px;
+    border-bottom:1px solid red;
+    box-sizing:border-box;
+
+    // padding:10px 20px;
+
+
+    // [TODO] mixin으로 clearboth 만들것
+    &:after{
+        content:'';
+        display:block;
+        clear:both;
+    }
+
+    h1{
+        margin:0;
+        float:left;
+        width:50%;
+        font-size:24px;
+        line-height:1;
+    }
+
+    .header__btns{
+        width:50%;
+        float:right;
+        text-align:right;
+
+        button{
+            padding:2px 20px;
+            display:inline-block;
+            border:1px solid #333;
+            border-radius:3px;
+            background:transparent;
+            
+        }
+    }
+
+}
+
 footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
     text-align:center;
-    padding:8px 20px;
-    background:#333;
+    padding:20px;
+    background:#555;
     font-size:12px;
     color:#fff;
 
@@ -75,5 +71,3 @@ footer{
         color:#fff;
     }
 }
-
-// [TODO] 사료 애니메이션 넣을 것
