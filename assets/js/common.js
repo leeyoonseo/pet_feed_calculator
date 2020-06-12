@@ -23,6 +23,9 @@
     let inputWeight = document.querySelector('#inputWeight');
     let foodBasket = document.querySelector('#foodBasket');
     let copyrightYearNode = document.querySelector('#year');
+
+    const viewer = document.querySelector('.viewer');
+    const viewerClose = document.getElementById('viewerClose');
     let viewerInfoNode = document.querySelector('#viewerInfo');
 
     let date = new Date();
@@ -99,22 +102,22 @@
             return false;
 
         }else if(age >= 2 && age <= 3){
-            result.lowest = weight * 0.06;
-            result.highest = weight * 0.07;
+            result.lowest = Math.floor(weight * 0.06);
+            result.highest = Math.floor(weight * 0.07);
             result.frequency = '3,4';
 
         }else if(age >= 4 && age <= 6){
-            result.lowest = weight * 0.04;
-            result.highest = weight * 0.05;
+            result.lowest = Math.floor(weight * 0.04);
+            result.highest = Math.floor(weight * 0.05);
             result.frequency = '2,3';
 
         }else if(age >= 7 && age <= 11){
-            result.lowest = weight * 0.02;
-            result.highest = weight * 0.03;
+            result.lowest = Math.floor(weight * 0.02);
+            result.highest = Math.floor(weight * 0.03);
             result.frequency = '2';
 
         }else{
-            result.lowest = weight * 0.02;
+            result.lowest = Math.floor(weight * 0.02);
             result.frequency = '2';
         }
 
@@ -145,6 +148,7 @@
             let weightText = `${info.weight}g`;
 
             if(frequencyText.length > 1){
+                console.log(info.highest)
                 foodText = `${info.lowest}~${info.highest}g`;
             }
 
@@ -157,7 +161,9 @@
                 foodBasket.appendChild(drawFood());
             }
 
-            viewerInfoNode.innerText = `${info.age}개월, ${weightText} 아가는 하루에 ${foodText}을 ${frequencyText}회에 걸쳐서 줘야해요.`;
+            let result = `<span class="viewer__title">${info.age}개월, ${weightText}</span>`;
+            result += `<span class="viewer__text">하루에 ${foodText}을 ${frequencyText}회에 나눠 급여</span>`;
+            viewerInfoNode.innerHTML = result;
         }
     };
 
@@ -181,24 +187,20 @@
             
             let err = target.parentNode.querySelector('.err') || document.createElement('span');
 
-            if(err.classList.contains('err')){
-                err.style.display = 'block';
+            err.classList.add('err');
+            err.innerText = '입력해주세요.';
+            target.parentNode.appendChild(err);
 
-            }else{
-                err.classList.add('err');
-                err.innerText = '입력해주세요.';
-                target.parentNode.appendChild(err);
-            }
+            setTimeout(() => {
+                err.remove();
+            }, 1000);
         },
 
         hide : ({ target }) => {
             target.classList.remove('error');
             
             let err = target.parentNode.querySelector('.err');
-            
-            if(err){
-                err.style.display = 'none';
-            }
+            err && err.remove();    
         }
     };
 
@@ -224,6 +226,12 @@
             } 
 
             controller();
+
+            viewer.classList.add('on');
         }
+    });
+
+    viewerClose.addEventListener('click', () => {
+        viewer.classList.remove('on');
     });
 })();

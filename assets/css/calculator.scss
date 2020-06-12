@@ -16,61 +16,82 @@
     box-sizing:border-box;
 
     .article__input__wrap{
+        position:relative;
+
         & + .article__input__wrap{
-            margin-top:20px;
-        }
-    }
-
-    input{
-        padding:5px;
-        border:2px solid rgba(252, 182, 62, 0.5);
-        box-sizing:border-box;
-
-        &:focus{
-            outline:none;
+            margin-top:10px;
         }
 
-        &.error{
-            border:2px solid red;
-        }
-    }
 
-    label{
-        position:absolute;
-        left:0;
-        top:0;
-        overflow:hidden;
-        width:1px;
-        height:1px;
-        clip:rect(0 0 0 0);
-        margin-left:-1px;
-    }
-
-    select{
-        outline:none;
-        padding:4px 5px;
-        min-width:65px;
-        vertical-align:top;
-        border:2px solid rgba(252, 182, 62, 0.5);
-        box-sizing:border-box;
-        background:#fff;
-        cursor:pointer;
-
-        &:focus{
-            outline:none;
-        }
-    }
+        input{
+            padding:5px;
+            border:2px solid rgba(252, 182, 62, 0.5);
+            box-sizing:border-box;
     
-    .err{
-        position:absolute;
-        font-size: 12px;
-        display: block;
-        // margin-top: 5px;
-        color: red;
-    }    
+            &:focus{
+                outline:none;
+            }
+    
+            &.error{
+                border:2px solid red;
+            }
+        }
+    
+        label{
+            position:absolute;
+            left:0;
+            top:0;
+            overflow:hidden;
+            width:1px;
+            height:1px;
+            clip:rect(0 0 0 0);
+            margin-left:-1px;
+        }
+    
+        select{
+            outline:none;
+            padding:4px 5px;
+            min-width:65px;
+            vertical-align:top;
+            border:2px solid rgba(252, 182, 62, 0.5);
+            box-sizing:border-box;
+            background:#fff;
+            cursor:pointer;
+    
+            &:focus{
+                outline:none;
+            }
+        }
+        
+        .err{
+            position:absolute;
+            left:0;
+            font-size: 12px;
+            color: #fff;
+            top:-35px;
+            // background:#333;
+            background:rgba(0,0,0,0.6);
+            // [TODO] 나중에 input이랑 크기 맞추기
+            padding:5px;
+
+            &:after{
+                position:absolute;
+                bottom:-5px;
+                left:5px;
+                content:'';
+                display:block;
+                width: 0px;
+                height: 0px;
+                border-left:5px solid transparent;
+                border-right:5px solid transparent;
+                border-top:5px solid rgba(0,0,0,0.6);
+            }
+        }    
+
+    }
 
     .article__submit{
-        margin-top:20px;
+        margin-top:10px;
         box-sizing:border-box;
         padding:5px;
         width:100%;
@@ -84,12 +105,45 @@
     }
 
     .viewer{
+        display:none;
         position:absolute;
         top:0;
         left:0;
         width:100%;
         height:100%;
         background:#fff;
+
+        &.on{
+            display:block;
+        }
+
+        .viewer__inner{
+            position:relative;
+            width:100%;
+            height:100%;
+            padding:30px;
+            box-sizing:border-box;
+
+            span{
+                display:inline-block;
+
+                & + span{
+                    margin-top:10px;
+                }
+            }
+            .viewer__title{
+                font-size:16px;
+                font-weight:700;
+            }
+
+            .viewer__close{
+                position:absolute;
+                top:5px;
+                right:5px;
+                background:transparent;
+                border:none;
+            }
+        }
     }
 }
 

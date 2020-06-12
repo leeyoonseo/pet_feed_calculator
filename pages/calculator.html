@@ -14,7 +14,6 @@
         <!-- [TODO] 로고 클릭 시 메인으로 -->
         <h1><a href="">OKAYOON</a></h1>
 
-        <!-- [TODO] 아이콘으로 대체하기 -->
         <button class="header__btn__prev">
             <span class="hidden">뒤로가기</span>
         </button>
@@ -38,7 +37,7 @@
         
                 <div class="article__input__wrap">
                     <label for="inputWeight">무게</label>
-                    <input id="inputWeight" placeholder="무게" value="2">
+                    <input id="inputWeight" placeholder="무게" value="5">
         
                     <select id="selectWeight">
                         <option selected value="kg">kg</option>
@@ -51,11 +50,14 @@
 
             <!-- [TODO] 레이어팝업처럼 -->
             <div id="viewer" class="article__items viewer">
-                <!-- [TODO] 이미지 추가할 것 -->
-                <button>X<span class="hidden">닫기</span></button>
-                <span class="character"></span>
-                <span id="viewerInfo" class="text"></span>
-                <div id="foodBasket"></div>
+                <div class="viewer__inner">
+                    <!-- [TODO] 이미지 추가할 것 -->
+                    <button id="viewerClose" class="viewer__close">X<span class="hidden">닫기</span></button>
+
+                    <span class="character"></span>
+                    <span id="viewerInfo" class="text"></span>
+                    <div id="foodBasket"></div>
+                </div>
             </div>
         </div>
     </section>
