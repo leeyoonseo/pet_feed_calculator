@@ -142,6 +142,8 @@
             viewerInfoNode.innerText = '모유기때는 아가가 배고플때마다 줘야해요.';
 
         }else{
+            foodBasket.classList.remove('baby');
+
             let frequencySplit = info.frequency.split(',');
             let frequencyText = frequencySplit.join('~');
             let foodText = `${info.lowest}g`;
@@ -162,7 +164,9 @@
             }
 
             let result = `<span class="viewer__title">${info.age}개월, ${weightText}</span>`;
-            result += `<span class="viewer__text">하루에 ${foodText}을 ${frequencyText}회에 나눠 급여</span>`;
+            result += `<span class="viewer__text">하루에 <span class="highlight">${foodText}</span>을`;
+            result += `<span class="highlight">${frequencyText}회</span>에 나눠 급여</span>`;
+
             viewerInfoNode.innerHTML = result;
         }
     };

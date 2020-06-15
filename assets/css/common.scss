@@ -1,3 +1,9 @@
+// [TODO] function 파일따로 빼기
+@function get-vw($input, $base-vw : 1920px){
+    @return ($input * 100vw) / $base-vw;
+}
+
+
 //[TODO] css, scss 파일 분리, 자동화 만들기
 html{
 
@@ -44,10 +50,12 @@ body{
 }    
 
 header{
+    height:get-vw(50px);
     position:relative;
+    width:100%;
     min-width:320px;
     padding:0 20px;
-    height:50px;
+    // height:50px;
     box-sizing:border-box;
     box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
 
