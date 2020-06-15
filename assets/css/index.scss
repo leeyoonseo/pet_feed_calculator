@@ -1,29 +1,31 @@
-// [TODO] mobile기준으로 볼거얌. font-size vw로 할 것!
-.main__wrap{
-    
+@charset "utf-8";
+// [TODO] 공통으로 뺄 수 있겠다 
+@import '_variables.scss';
 
+$pets : (dog, cat, rabbit, hamster);
+
+.main__wrap{
     .main__list{
         margin:0;
         padding:0;
-        max-width:600px;
         width:100%;
         box-sizing:border-box;
 
         .main__list__items{      
-            background:rgba(252, 182, 62, 0.1);
-            border:3px solid rgba(252, 182, 62, 0.5);
+            background:$sub-color;
+            border:get-rem(3px) solid $main-color;
             float:left;
             
-            width:calc(50% - 10px);
-            height:200px;
+            width:calc(50% - #{get-rem(10px)});
+            height:get-rem(200px);
             box-sizing:border-box;
 
             &:nth-of-type(even){
-                margin-left:20px;
+                margin-left:get-rem(20px);
             }
 
             &:nth-of-type(n+3){
-                margin-top:20px;
+                margin-top:get-rem(20px);
             }
 
             a{
@@ -40,33 +42,19 @@
                 transition:all 0.2s linear;
             }
 
-            .bg_pet{
-                display:block;
-                width:100px;
-                height:100px;
-                background-size:contain;
-                background-position:center;
-                transform:scale(1);
-                transition:all 0.2s linear;
+            @each $pet in $pets{
+                .bg_pet.#{$pet}{
+                    background:url("../img/icon_#{$pet}.png")no-repeat;
+                    display:block;
+                    width:get-rem(80px);
+                    height:get-rem(80px);
+                    background-size:contain;
+                    background-position:center;
+                    transform:scale(1);
+                    transition:all 0.2s linear;
+                }
             }
-            
         }
-    }
-
-    .dog .bg_pet{
-        background:url(../img/icon_dog.png)no-repeat;
-    }
-
-    .cat .bg_pet{
-        background:url(../img/icon_cat.png)no-repeat;
-    }
-
-    .rabbit .bg_pet{
-        background:url(../img/icon_rabbit.png)no-repeat;
-    }
-
-    .hamster .bg_pet{
-        background:url(../img/icon_hamster.png)no-repeat;
     }
 }
 

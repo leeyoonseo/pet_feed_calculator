@@ -1,33 +1,20 @@
-// [TODO] function 파일따로 빼기
-@function get-vw($input, $base-vw : 1920px){
-    @return ($input * 100vw) / $base-vw;
-}
+@charset "utf-8";
+@import '_variables';
 
 
 //[TODO] css, scss 파일 분리, 자동화 만들기
+// [TODO] 스타일 정리하기
 html{
-
-    // [TODO] 스타일 정리하기
-    // [TODO] 600px 아래일 경우 하단에 footer 붙여버리기
-    min-height:600px;
     height:100%;
 }
 
 body{
     margin:0;
     padding:0;
-    font-size:1em;
     height:100%;
 
     .hidden{
-        position:absolute; 
-        width:1px; 
-        height:1px; 
-        clip:rect(0 0 0 0); 
-        overflow:hidden; 
-        border:0; 
-        padding:0; 
-        margin:-1px;
+        @include hidden();
     }
 
     ul,li,ol{
@@ -50,28 +37,23 @@ body{
 }    
 
 header{
-    height:get-vw(50px);
-    position:relative;
+    position:fixed;
     width:100%;
+    top:0;
     min-width:320px;
-    padding:0 20px;
-    // height:50px;
+    height:get-rem(60px);
+    padding:0 5%;
     box-sizing:border-box;
-    box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+    box-shadow:get-rem(1px) get-rem(1px) get-rem(10px) rgba(0,0,0,0.5);
 
-    // [TODO] mixin으로 clearboth 만들것
-    &:after{
-        content:'';
-        display:block;
-        clear:both;
-    }
+    @include clearfix();
 
     h1{
         margin:0;
         float:left;
         width:50%;
-        font-size:24px;
-        line-height:50px;
+        font-size:get-rem(24px);
+        line-height:get-rem(60px);
 
         a{
             color:#fcb63e;
@@ -82,40 +64,56 @@ header{
         position:absolute;
         top:50%;
         transform:translateY(-50%);
-        right:20px;
+        right:5%;
         border:none;
-        width:32px;
-        height:32px;
+        width:get-rem(32px);
+        height:get-rem(32px);
         background:url(../img/icon_arrow_left.png)no-repeat;
         background-size:cover;
     }
 }
 
+
 .article{
-    padding:0 20px;
-    min-width:320px;
+    padding:get-rem(60px) 5%;
+    // min-width:320px;
 
     display:flex;
-    height:calc(100% - 100px);
+    height:calc(100% - #{get-rem(120px)});
     flex-wrap:wrap;
     align-items:center;
     justify-content:center;
 }
 
 footer{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
     min-width:320px;
-    padding:8px 20px;
     box-sizing:border-box;
     position:fixed;
     bottom:0;
     width:100%;
     text-align:center;
-    height:50px;
+    height:get-rem(60px);
     background:#555;
-    font-size:12px;
+    font-size:get-rem(12px);
     color:#fff;
 
     a{
         color:#fff;
+    }
+}
+
+@media (min-width : 1025px){
+    html{
+        font-size:16px;
+    }
+}
+  
+@media (max-width : 1024px){
+    html{
+        font-size:14px
     }
 }
