@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+body{
+    margin:0;
+    position:relative;
+}
+
+.hidden{
+    position:absolute; 
+    width:1px; 
+    height:1px; 
+    clip:rect(0 0 0 0); 
+    overflow:hidden; 
+    border:0; 
+    padding:0; 
+    margin:-1px;
+}
+
+header{
+    position:fixed;
+    padding:5%;
+    width:100%;
+    text-align:right;
+    box-sizing:border-box;
+}
+
+.menu__button{
+    position:absolute;
+    top:5%;
+    right:5%;
+    padding:0;
+    width:6vh;
+    height:5vh;
+    border:none;
+    cursor:pointer;
+    outline:none;
+    background:url('../img//speech_bubble.png')no-repeat center;
+    background-size:cover;
+}
+
+.visual__section{
+    padding:5%;
+    height:50vh;
+    box-sizing:border-box;
+    background: rgb(213,251,213);
+    background: linear-gradient(180deg, rgba(213,251,213,1) 0%, rgba(255,255,255,1) 100%);
+}
+
+.banner_section{
+    height:6vh;
+    background-color:#fefefe;
+    box-shadow:1px 5px 5px rgba(0,0,0,0.2);
+}
